@@ -1,0 +1,36 @@
+﻿@model IEnumerable<VoiceSageAssessment.Models.GroupDetail>
+
+@{
+    ViewBag.Title = "ViewAll";
+    Layout = null;
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupDescription)
+        </td>
+        <td>
+            <a class="btn btn-primary btn-sm" onclick="editGroupDetails('@Url.Action("AddOrEdit", "Home", new { grupId=@item.GroupId})')">Edit</a>
+            <a class="btn btn-danger btn-sm" onclick="deleteGroupDetails('@Url.Action("Delete", "Home", new { grupId=@item.GroupId})')">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>
